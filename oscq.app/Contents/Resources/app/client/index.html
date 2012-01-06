@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OSCQ</title>
+    <link href='/webfonts/stylesheet.css' rel='stylesheet' type='text/css'/>
+    <link href='/app.css' rel='stylesheet' type='text/css'/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="batman/es5-shim.js"></script>
+    <script type="text/javascript" src="batman/batman.js"></script>
+    <script type="text/javascript" src="batman/batman.jquery.js"></script>
+	<script type="text/javascript" data-main="cs!app" src="require-jquery.js"></script>
+</head>
+
+<body>
+  <div id="container" class="loading">
+    <h2 data-event-click="controllers.routes.hide"> routes </h2>
+	<div id="routes">
+	  <table>
+		<tr data-foreach-route="Route.all">
+            <td><div data-bind-id="route.blinkID" class="unblink"></div></td>
+			<td><input class="prettyinput" data-bind="route.match"/></td>
+			<td><input class="prettyinput"data-bind="route.reroute"/></td>
+			<td><select data-bind="route.input_id">
+			  <option data-foreach-input="Input.all" data-bind="input.name" data-bind-value="input.id"/>
+			</select></td>
+			<td><select data-bind="route.output_id">
+			  <option data-foreach-output="Output.all" data-bind="output.activeName" data-bind-value="output.id"/>
+			</select></td>
+			<td><input type="submit" class="prettybutton" value="edit" data-event-click="route.save"/></td>
+			<td><input type="button"  class="prettybutton" value="delete" data-event-click="route.destroy"/></td>
+		</tr>
+	  </table>
+        <form data-formfor-route="controllers.routes.editRoute" data-event-submit="controllers.routes.create">
+          <input class="prettyinput" data-bind="route.match"/>
+          <input class="prettyinput" data-bind="route.reroute"/>
+          <select data-bind="route.input_id">
+            <option data-foreach-input="Input.all" data-bind="input.name" data-bind-value="input.id"/>
+          </select>
+          <select data-bind="route.output_id">
+            <option data-foreach-output="Output.all" data-bind="output.activeName" data-bind-value="output.id"/>
+          </select>
+          <input type="submit" class="prettybutton" value="create"/>
+        </form>
+ 	</div>
+    <hr/>
+    <h2 data-event-click="controllers.inputs.hide"> inputs </h2>
+	<div id="inputs">
+	  <table>
+		<tr data-foreach-input="Input.all" data-showif="input.showInList">
+			<td><input class="prettyinput" data-bind="input.port"/></td>
+			<td><input class="prettyinput" data-bind="input.name"/></td>
+			<td><input type="submit" class="prettybutton" value="edit" data-event-click="input.save"/></td>
+			<td><input type="button" class="prettybutton" value="delete" data-event-click="input.destroy"/></td>
+		</tr>
+	  </table>
+	  <form data-formfor-input="controllers.inputs.editInput" data-event-submit="controllers.inputs.create">
+		<input class="prettyinput" placeholder="port number" data-bind="input.port"/>
+		<input class="prettyinput" placeholder="port name" data-bind="input.name"/>
+		<input type="submit" class="prettybutton" value="create"/>
+	  </form>
+	</div>
+    <hr/>
+    <h2 data-event-click="controllers.outputs.hide"> outputs </h2>
+	<div id="outputs">
+	  <table>
+		<tr data-foreach-output="Output.all" data-showif="output.showInList">
+		  <td><span data-bind="output.name"></span></td>
+		  <td><span data-bind="output.address"></span></td>
+		  <td><span data-bind="output.port"></span></td>
+          <td><input type="button" class="prettybutton" value="delete" data-showif="output.user" data-event-click="output.destroy"/></td>
+		</tr>
+	  </table>
+      <form data-formfor-output="controllers.outputs.editOutput" data-event-submit="controllers.outputs.create">
+        <input class="prettyinput" placeholder="name" data-bind="output.name"/>
+        <input class="prettyinput" placeholder="address" data-bind="output.address"/>
+        <input class="prettyinput" placeholder="port" data-bind="output.port"/>
+        <input type="submit" class="prettybutton" value="create"/>
+      </form>
+	</div>
+    </div>
+</body>
+</html>

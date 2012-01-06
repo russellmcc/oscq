@@ -1,0 +1,127 @@
+/* this will be CSS */
+
+.loading {
+    visibility: hidden;
+}
+
+#loading_indicator {
+    visibility: hidden;
+}
+
+#loading_indicator .loading {
+    visibility: visible;
+}
+
+body {
+    text-align: center;
+    background: rgb(254,244,154);
+}
+
+.blink {
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid rgb(228,64,36);
+    background-color: rgb(252,178,56);
+    min-width: 20px;
+    min-height: 20px;
+}
+.unblink {
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid rgb(228,64,36);
+    background: transparent;
+    width: 20px;
+    height: 20px;
+}
+
+hr {
+    width: 90%;
+    border: 1px solid rgb(228,64,36);
+}
+
+.light {
+    width: 70%;
+    border: 0;
+    color: rgb(228,64,36);
+    background-color: rgb(228,64,36);
+    height:1px;
+}
+
+#container {
+    text-align: left;
+    margin: auto;
+    display: inline-block;
+    background: rgb(254, 244, 154);
+    color: rgb(228,64,36);
+    font-family: 'OrbitronLight';
+}
+
+.deadToMe {
+    visibility: hidden;
+    height: 0px;
+}
+
+h2 {
+    display: inline-block;
+    font-family: 'SaturnVRegular';
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+.prettyinput {
+	background-color: rgb(252,178,56);
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid rgb(228,64,36);
+    color: rgb(228,64,36);
+	padding:6px 12px;
+    padding-top: 8px;
+    height:14px;
+    font-family: 'OrbitronLight';
+}
+
+::-webkit-input-placeholder {
+    color: rgb(105,142,184);
+}
+:-moz-placeholder {
+    color: rgb(105,142,184);
+}
+
+.prettybutton {
+    cursor: pointer;
+    font-family: 'SaturnVRegular';
+	background-color: rgb(252,178,56);
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid rgb(228,64,36);
+    color: inherit;
+	padding:6px 12px;
+    padding-top: 8px;
+}.prettybutton:active {
+	position:relative;
+	top:1px;
+}
+
+select {
+    cursor: pointer;
+  -webkit-appearance: button;
+  -webkit-border-radius: 6px;
+  background-color: rgb(252,178,56);
+  font-family: 'OrbitronLight';
+  border: 1px solid rgb(228,64,36);
+  color: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding:6px 12px;
+  padding-top: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

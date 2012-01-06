@@ -1,0 +1,40 @@
+{
+   "name": "oscq",
+   "version": "0.0.1",
+   "author": {
+       "name" : "Russell McClellan",
+       "email": "russell.mcclellan@gmail.com",
+       "url" : "http://www.ghostfact.com"
+   },
+   "description": "Tool for routing OSC",
+   "keywords": [
+       "OSC",
+	   "router"
+   ],
+   "repository" : {
+       "type": "git",
+       "url": "http://github.com/ghostfact/oscq.git" 
+   },
+   "dependencies" : [
+       "coffee-script",
+       "express",
+	   "express-resource",
+	   "node-bj",
+	   "osc-min",
+	   "underscore",
+       "socket.io"
+   ],
+   "config" : {
+	   "port" : "8124"
+   },
+   "directories": {
+       "bin": "bin",
+       "lib": "lib"
+   },
+   "engines": {
+       "node": ">=0.3.0"
+   },
+   "scripts": {
+	   "start" : "coffee server.coffee"
+   }
+}
