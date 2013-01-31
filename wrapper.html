@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OSCQ</title>
+    <link href='client/webfonts/stylesheet.css' rel='stylesheet' type='text/css'/>
+    <link href='client/app.css' rel='stylesheet' type='text/css'/>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Loading...</h1>
+      <script>
+        require('coffee-script'); 
+        s = require('./server');
+        window.location = "http://localhost:" + s.start();
+      </script>
+    </div>
+  </body>
+</html>

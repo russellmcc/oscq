@@ -7,37 +7,39 @@ express = require 'express'
 require 'express-resource'
 
 
-exports.start = (port, done) ->
+exports.start = (port) ->
 
   # start the server
-  server = express.createServer()
+  app = express()
+  server = (require 'http').createServer app
+
 
   # set up push notifications
   (require './server/push').connect server
 
-  server.use express.bodyParser()
+  app.use express.bodyParser()
 
-  server.use express.errorHandler()
+  app.use express.errorHandler()
 
   # Resources
-  server.use (server.resource 'routes', require './server/routes')
-  server.use (server.resource 'outputs', require './server/outputs')
-  server.use (server.resource 'inputs', require './server/inputs')
+  app.use (app.resource 'routes', require './server/routes')
+  app.use (app.resource 'outputs', require './server/outputs')
+  app.use (app.resource 'inputs', require './server/inputs')
 
   # serve up all the batman stuff at /batman/*
-  server.get '/batman/*', (req, res, next) ->
+  app.get '/batman/*', (req, res, next) ->
     req.url = '/' + req.params[0]
     express.static(__dirname + '/node_modules/batman/lib')(req, res, next)
 
   # serve up the client stuff at the root directory
-  server.use express.static(__dirname + "/client")
+  app.use express.static(__dirname + "/client")
 
   # Start UI server
-  uiPort = port ? process.env.npm_package_config_port
+  uiPort = port ? 8124 # process.env.npm_package_config_port
   server.listen uiPort
   console.log "listening on #{uiPort}"
 
-  done?()
+  return uiPort
 
 if require.main is module
-  exports.start()
+  exports.start()  

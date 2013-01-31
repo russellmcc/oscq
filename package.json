@@ -13,17 +13,25 @@
    ],
    "repository" : {
        "type": "git",
-       "url": "http://github.com/ghostfact/oscq.git" 
+       "url": "http://github.com/russellmcc/oscq.git" 
    },
    "dependencies" : [
        "coffee-script",
        "express",
 	   "express-resource",
-	   "node-bj",
+	   "node-bj-bindings",
+       "batman@0.9.0",
 	   "osc-min",
 	   "underscore",
        "socket.io"
    ],
+   "window": {
+    "toolbar": false,
+    "width": 800,
+    "height": 800,
+    "position": "mouse"
+   },
+   "main" : "wrapper.html",
    "config" : {
 	   "port" : "8124"
    },

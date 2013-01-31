@@ -17,7 +17,7 @@ outputs =
 
 currid = 1
 
-mdns = require 'node-bj'
+mdns = require 'node-bj-bindings'
 osc = require 'osc-min'
 dgram = require 'dgram'
 routes = require './routes'

@@ -1,5 +1,5 @@
 dgram = require 'dgram'
-mdns = require 'node-bj'
+mdns = require 'node-bj-bindings'
 osc = require 'osc-min'
 routes = require './routes'
 outputs = require './outputs'

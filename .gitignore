@@ -1,1 +1,2 @@
-/oscq.app/Contents/Resources/app/node_modules/
+node_modules/
+/npm-debug.log
