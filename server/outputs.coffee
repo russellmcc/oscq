@@ -17,7 +17,7 @@ outputs =
 
 currid = 1
 
-mdns = require 'node-bj-bindings'
+mdns = require 'mdns'
 osc = require 'osc-min'
 dgram = require 'dgram'
 routes = require './routes'
@@ -25,10 +25,10 @@ push = require './push'
 
 sendSocket = dgram.createSocket 'udp4'
 
-browser = mdns.createBrowser (new mdns.RegType 'osc', 'udp')
+browser = mdns.createBrowser (mdns.udp 'osc')
 browser.on 'serviceDown', (rinfo) ->
   for id, output of outputs
-    if output.name is rinfo.serviceName
+    if output.name is rinfo.name
       output.active = false
       for rid, route of routes.routes
         route.output_id = 0 if route.output_id is id
@@ -37,7 +37,7 @@ browser.on 'serviceDown', (rinfo) ->
 browser.on 'serviceUp', (rinfo) ->
   # if it's an existing ouptut, just set it as active
   for id, output of outputs
-    if output.name is rinfo.serviceName
+    if output.name is rinfo.name
       output.active = true
       return
 
@@ -48,10 +48,13 @@ browser.on 'serviceUp', (rinfo) ->
     id: currid++
     address: rinfo.host ? ''
     port: rinfo.port ? null
-    name: rinfo.serviceName ? ''
+    name: rinfo.name ? ''
     active: true
     user : false
+      
   outputs[newOutput.id] = newOutput
+
+  
   push.emit 'output change', {}
 
 browser.start()

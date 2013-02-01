@@ -19,7 +19,7 @@
        "coffee-script",
        "express",
 	   "express-resource",
-	   "node-bj-bindings",
+	   "mdns",
        "batman@0.9.0",
 	   "osc-min",
 	   "underscore",

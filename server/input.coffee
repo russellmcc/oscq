@@ -1,5 +1,5 @@
 dgram = require 'dgram'
-mdns = require 'node-bj-bindings'
+mdns = require 'mdns'
 osc = require 'osc-min'
 routes = require './routes'
 outputs = require './outputs'
@@ -34,7 +34,7 @@ module.exports = (@port, @name, @id) ->
       console.log error
   @dgram.bind @port
   @port = @dgram.address().port
-  @ad = mdns.createAdvertisement (new mdns.RegType 'osc', 'udp'), @port, {name: name}
+  @ad = mdns.createAdvertisement (new mdns.udp 'osc'), @port, {name: name}
   @ad.start()
   @json = =>
     return {

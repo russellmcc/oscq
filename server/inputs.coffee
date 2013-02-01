@@ -23,7 +23,7 @@ routes = require './routes'
 
 outputs.ignore = (rinfo) ->
   for id, input of inputs
-    return true if (input.name is rinfo.serviceName[0...(input.name?.length ? 0)]) and (input.port is rinfo.port)
+    return true if (input.name is rinfo.name[0...(input.name?.length ? 0)]) and (input.port is rinfo.port)
   return false
 
 module.exports = {
